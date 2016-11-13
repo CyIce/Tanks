@@ -240,3 +240,19 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/Temp
+/ProjectSettings
+/Library
+/Assets/AudioClips
+/Assets/Editor/ImageEffects
+/Assets/Fonts/Bowlby_One
+/Assets/Materials
+/Assets/Models
+/Assets/Prefabs
+/Assets/Editor
+/Assets/Sprites
+/Assets/Standard Assets/Effects/ImageEffects
+/Tanks.sln
+/Tanks.CSharp.Plugins.csproj
+/Tanks.CSharp.Editor.csproj
+/Tanks.CSharp.csproj
