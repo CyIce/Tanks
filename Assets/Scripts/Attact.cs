@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Attact : MonoBehaviour {
+public class Attact : MonoBehaviour
+{
 
     public KeyCode shot;
 
@@ -17,24 +18,35 @@ public class Attact : MonoBehaviour {
     //让炮弹呈抛物线运动；
     public float shellAngular;
 
-	void Start ()
+    void Start()
     {
-	
-	}
-	
-	void Update ()
+
+    }
+
+    void Update()
     {
-        shell = Instantiate(bullet, firePosition.position, firePosition.rotation) as GameObject;
+        attact();
+    }
 
-        shellRg = shell.GetComponent<Rigidbody>();
+    /// <summary>
+    /// 控制player发射炮弹；
+    /// </summary>
+    void attact()
+    {
+        if (Input.GetKeyDown(shot))
+        {
+            shell = Instantiate(bullet, firePosition.position, firePosition.rotation) as GameObject;
 
-        shellRg.velocity = (transform.forward + new Vector3(0, shellAngular, 0)) * shellSpeed;
+            shellRg = shell.GetComponent<Rigidbody>();
+
+            shellRg.velocity = (transform.forward + new Vector3(0, shellAngular, 0)) * shellSpeed;
+        }
 
         if (shell != null)
         {
             shellRg.angularVelocity = transform.right;
         }
-    }
 
-    
+
+    }
 }
