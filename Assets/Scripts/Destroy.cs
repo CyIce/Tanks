@@ -10,7 +10,7 @@ public class Destroy : MonoBehaviour {
 
     void OnTriggerEnter(Collider collider)
     {
-        if(collider!=null)
+        if(collider!=null&&collider.tag!="Shell")
         {
             GameObject explosion = Instantiate(shellExplosion,
                                    gameObject.transform.position,

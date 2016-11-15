@@ -84,15 +84,15 @@ public class EnemyControy : MonoBehaviour {
             Quaternion rotation = Quaternion.LookRotation(vecDistance);
             transform.rotation = rotation;
 
-            enemyRg.velocity = Vector3.Normalize(vecDistance) * speed * distance;
-
-            //攻击玩家；
-            attact();
-
-        }  
+            //enemyRg.velocity = Vector3.Normalize(vecDistance) * speed * distance;
+            enemyRg.velocity = transform.forward * speed * distance;
+        }
         else
         {
             enemyRg.velocity = new Vector3(0, 0, 0);
+
+            //攻击玩家；
+            attact();
         }
     }
 
