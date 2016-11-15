@@ -24,28 +24,17 @@ public class Attact : MonoBehaviour {
 	
 	void Update ()
     {
-        attact();
-	}
+        shell = Instantiate(bullet, firePosition.position, firePosition.rotation) as GameObject;
 
-    /// <summary>
-    /// 控制player发射炮弹；
-    /// </summary>
-    void attact()
-    {
-        if (Input.GetKeyDown(shot))
-        {
-            shell = Instantiate(bullet, firePosition.position, firePosition.rotation) as GameObject;
+        shellRg = shell.GetComponent<Rigidbody>();
 
-            shellRg = shell.GetComponent<Rigidbody>();
+        shellRg.velocity = (transform.forward + new Vector3(0, shellAngular, 0)) * shellSpeed;
 
-            shellRg.velocity = (transform.forward+new Vector3(0,shellAngular,0))* shellSpeed;
-        }
-
-        if(shell!=null)
+        if (shell != null)
         {
             shellRg.angularVelocity = transform.right;
         }
-
-        
     }
+
+    
 }
