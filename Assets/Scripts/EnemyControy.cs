@@ -16,6 +16,8 @@ public class EnemyControy : MonoBehaviour {
 
     private Rigidbody enemyRg;
 
+    private float fireTime=0;
+
 
     //让炮弹呈抛物线运动；
     public float shellAngular;
@@ -73,7 +75,7 @@ public class EnemyControy : MonoBehaviour {
         }
 
 
-        if (Mathf.Abs(distance) > attactArea)
+        if (distance > attactArea) 
         {
             distance /= Mathf.Abs(distance);
 
@@ -100,15 +102,21 @@ public class EnemyControy : MonoBehaviour {
     //发射炮弹；
     void attact()
     {
-        GameObject shell = Instantiate(bullet, firePosition.position, firePosition.rotation) as GameObject;
+        fireTime += Time.deltaTime;
 
-        shellRg = shell.GetComponent<Rigidbody>();
-
-        shellRg.velocity = (transform.forward + new Vector3(0, shellAngular, 0)) * shellSpeed;
-
-        if (shell != null)
+        if (fireTime > 0.5f)
         {
+            fireTime = 0;
+
+            GameObject shell = Instantiate(bullet, firePosition.position, firePosition.rotation) as GameObject;
+
+            shellRg = shell.GetComponent<Rigidbody>();
+
+            shellRg.velocity = (transform.forward + new Vector3(0, shellAngular, 0)) * shellSpeed;
+
             shellRg.angularVelocity = transform.right;
         }
+
+
     }
 }
