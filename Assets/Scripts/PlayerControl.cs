@@ -36,6 +36,7 @@ public class PlayerControl : MonoBehaviour {
 	
 	void Update ()
     {
+
         move();
 
         turning();
