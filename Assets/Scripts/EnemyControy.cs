@@ -18,6 +18,9 @@ public class EnemyControy : MonoBehaviour {
 
     private float fireTime=0;
 
+    //控制enemy旋转的速读；
+    private float rotationSpeed=0.01f;
+
 
     //让炮弹呈抛物线运动；
     public float shellAngular;
@@ -63,6 +66,8 @@ public class EnemyControy : MonoBehaviour {
 
 
 
+
+
         if (Mathf.Abs(a) < Mathf.Abs(b)) 
         {
             vecDistance = player1.position - transform.position;
@@ -74,17 +79,11 @@ public class EnemyControy : MonoBehaviour {
             distance = b;
         }
 
-
         if (distance > attactArea) 
         {
             distance /= Mathf.Abs(distance);
 
             enemyRg.velocity = Vector3.Normalize(vecDistance) * speed * distance;
-
-
-            //使enemy指向player；
-            Quaternion rotation = Quaternion.LookRotation(vecDistance);
-            transform.rotation = rotation;
 
             //enemyRg.velocity = Vector3.Normalize(vecDistance) * speed * distance;
             enemyRg.velocity = transform.forward * speed * distance;
@@ -96,6 +95,13 @@ public class EnemyControy : MonoBehaviour {
             //攻击玩家；
             attact();
         }
+
+
+        //使enemy指向player；
+        Quaternion rotation = Quaternion.LookRotation(vecDistance);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.time * rotationSpeed);
+
     }
 
 
