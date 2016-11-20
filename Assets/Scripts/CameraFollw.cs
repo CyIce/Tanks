@@ -34,6 +34,11 @@ public class CameraFollw : MonoBehaviour {
 	
 	void Update ()
     {
+        if (player1 == null || player2 == null) 
+        {
+            return;
+        }
+
         playerCenter = (player1.position + player2.position) / 2;
 
         camera.orthographicSize = Vector3.Magnitude(player1.position - player2.position) / cameraScale;

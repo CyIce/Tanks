@@ -13,15 +13,12 @@ public class Attact : MonoBehaviour
     private GameObject shell;
     private Rigidbody shellRg;
 
+
     public float shellSpeed;
 
     //让炮弹呈抛物线运动；
     public float shellAngular;
 
-    void Start()
-    {
-
-    }
 
     void Update()
     {

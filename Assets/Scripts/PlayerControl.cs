@@ -6,6 +6,14 @@ public class PlayerControl : MonoBehaviour {
 
     private Rigidbody player;
 
+    //坦克停止的声音；
+    public AudioClip tankIdleAudio;
+    //坦克移动时的声音；
+    public AudioClip tankDrivingAudio;
+
+    
+    private AudioSource audio;
+
     //player的移动速度；
     public float moveSpeed;
 
@@ -21,6 +29,7 @@ public class PlayerControl : MonoBehaviour {
 
 	void Start ()
     {
+        audio = GetComponent<AudioSource>();
 
         player = gameObject.GetComponent<Rigidbody>();
 	}
@@ -40,6 +49,17 @@ public class PlayerControl : MonoBehaviour {
         v = Input.GetAxis("VerticalPlayer" + playerTag);
 
         player.velocity = transform.forward * v * moveSpeed;
+
+        if (Mathf.Abs(v) >= 0.1) 
+        {
+            audio.clip = tankDrivingAudio;
+            audio.Play();
+        }
+        else
+        {
+            audio.clip = tankIdleAudio;
+            audio.Play();
+        }
 
     }
 

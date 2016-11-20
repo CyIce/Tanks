@@ -5,6 +5,7 @@ public class Destroy : MonoBehaviour {
 
     public GameObject shellExplosion;
 
+    public AudioClip shellExposionSource;
 
     public float lifeTime;
 
@@ -12,6 +13,8 @@ public class Destroy : MonoBehaviour {
     {
         if(collider!=null&&collider.tag!="Shell")
         {
+            AudioSource.PlayClipAtPoint(shellExposionSource, transform.position);
+
             GameObject explosion = Instantiate(shellExplosion,
                                    gameObject.transform.position,
                                    Quaternion.identity) as GameObject;

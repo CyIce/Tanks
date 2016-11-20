@@ -12,6 +12,8 @@ public class TanksHp : MonoBehaviour {
 
     private float explosionLifeTime = 1;
 
+    public AudioClip tankExplosionSource;
+
     void OnTriggerEnter(Collider collider)
     {
 
@@ -27,6 +29,7 @@ public class TanksHp : MonoBehaviour {
             GameObject explosion = Instantiate(tankExplosion,
                                    transform.position + new Vector3(0, 2, 0),
                                    transform.rotation) as GameObject;
+            AudioSource.PlayClipAtPoint(tankExplosionSource, transform.position);
 
             Destroy(explosion, explosionLifeTime);
 
